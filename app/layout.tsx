@@ -45,7 +45,12 @@ export const metadata: Metadata = {
     description: portfolioData.personal.bio[0],
   },
   icons: {
-    icon: "/icon.svg",
+    icon: [
+      { url: "/icon.png", type: "image/png" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/icon.png",
   },
 };
 
