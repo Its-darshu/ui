@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 0 0% 1.9%;
+    --card: 208 100% 97%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 208 100% 97%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 12%;
+    --tertiary: 217 91% 60%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 35.1%;
+    --accent: 209 100% 94%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 208 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 73.5%;
+    --muted: 0 0% 10.9%;
+    --muted-foreground: 0 0% 53.5%;
+    --accent: 208 25% 15%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased min-h-screen selection:bg-foreground selection:text-background;
+    font-size: 1.125rem;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* Grain / Film Noise Texture Overlay */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 99;
+    opacity: 0.035;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+}
+
+@layer components {
+  .showcase-footer {
+    position: relative;
+    display: flex;
+    min-height: 22rem;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    background-color: hsl(var(--background));
+    background-image: radial-gradient(
+      ellipse 110% 90% at 50% 112%,
+      rgb(156 183 249 / 0.95) 0%,
+      rgb(156 183 249 / 0.7) 42%,
+      rgb(156 183 249 / 0.18) 68%,
+      transparent 100%
+    );
+  }
+
+  .showcase-footer-meta {
+    position: absolute;
+    top: 2rem;
+    left: 1.5rem;
+    z-index: 1;
+    margin: 0;
+    color: hsl(var(--foreground) / 0.55);
+    font-family: var(--font-mono), monospace;
+    font-size: 0.875rem;
+    line-height: 1rem;
+  }
+
+  .showcase-footer-word {
+    width: 100%;
+    margin: 0 -0.05em -0.1em;   /* to change the footer space between the words */
+    color: rgb(245 245 255 / 0.85);
+    font-size: clamp(8rem, 13vw, 15rem);
+    font-weight: 800;
+    line-height: 0.8;
+    text-align: center;
+  }
+
+  .dark .showcase-footer {
+    background-image: radial-gradient(
+      ellipse 110% 78% at 50% 112%,
+      rgb(69 77 210 / 0.82) 0%,
+      rgb(48 54 157 / 0.64) 42%,
+      rgb(28 31 94 / 0.26) 68%,
+      transparent 100%
+    );
+  }
+
+  @media (max-width: 640px) {
+    .showcase-footer {
+      min-height: 17rem;
+    }
+
+    .showcase-footer-meta {
+      top: 1.5rem;
+    }
+  }
+
+  /* Entry Card as on kshv.me */
+  .entry-card {
+    border-radius: var(--radius);
+    border-width: 1px;
+    border-style: solid;
+    border-color: hsl(var(--border) / 0.5);
+    background-color: hsl(var(--muted) / 0.35);
+    padding: 1rem;
+    transition: background-color 150ms cubic-bezier(0, 0, 0.2, 1),
+                border-color 150ms cubic-bezier(0, 0, 0.2, 1);
+  }
+
+  .entry-card:hover {
+    border-color: hsl(var(--border) / 0.8);
+    background-color: hsl(var(--muted) / 0.5);
+  }
+}
