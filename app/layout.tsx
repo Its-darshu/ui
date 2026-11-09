@@ -44,6 +44,9 @@ export const metadata: Metadata = {
     title: `${portfolioData.personal.name} — ${portfolioData.personal.role}`,
     description: portfolioData.personal.bio[0],
   },
+  icons: {
+    icon: "/icon.svg",
+  },
 };
 
 export default function RootLayout({

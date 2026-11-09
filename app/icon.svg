@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <style>
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #18181b; }
+      .fg { fill: #fafafa; }
+    }
+    @media (prefers-color-scheme: light) {
+      .bg { fill: #f4f4f5; }
+      .fg { fill: #09090b; }
+    }
+  </style>
+  <rect class="bg" width="32" height="32" rx="8" />
+  <text class="fg" x="50%" y="54%" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="18" text-anchor="middle" dominant-baseline="middle">D</text>
+</svg>
